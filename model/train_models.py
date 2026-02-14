@@ -164,7 +164,7 @@ class MLClassifierPipeline:
         print("TRAINING COMPLETED")
         print("="*80)
     
-    def save_models(self, save_dir='/home/cloud/Downloads/ML-Assignment2/model'):
+    def save_models(self, save_dir='/home/cloud/Downloads/ML-Assignment_2/model'):
         """
         Save all trained models
         """
@@ -230,7 +230,7 @@ def main():
     Main execution function
     """
     # Example usage - You need to update these values based on your dataset
-    DATA_PATH = '/home/cloud/Downloads/ML-Assignment2/data/heart.csv'  # Update this
+    DATA_PATH = '/home/cloud/Downloads/ML-Assignment_2/data/heart.csv'  # Update this
     TARGET_COLUMN = 'HeartDisease'  # Update this with your target column name
     
     # Initialize pipeline
