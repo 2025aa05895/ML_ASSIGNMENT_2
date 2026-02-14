@@ -18,7 +18,7 @@ warnings.filterwarnings('ignore')
 # Page configuration
 st.set_page_config(
     page_title="ML Classification Models",
-    page_icon="🤖",
+    page_icon="💡",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -30,7 +30,7 @@ st.markdown("""
         padding: 2rem;
     }
     .stMetric {
-        background-color: #f0f2f6;
+        background-color: #1C0770;
         padding: 10px;
         border-radius: 5px;
     }
@@ -44,7 +44,7 @@ st.markdown("""
     """, unsafe_allow_html=True)
 
 # Title and description
-st.title("🤖 Machine Learning Classification Models")
+st.title("💡 Machine Learning Classification Models")
 st.markdown("### Compare Multiple Classification Algorithms")
 st.markdown("---")
 
