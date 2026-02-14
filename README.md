@@ -113,8 +113,8 @@ ml_assignment_2/
 
 1. **Clone the repository**
 ```bash
-git clone <your-repository-url>
-cd ml_assignment2
+git clone https://github.com/2025aa05895/ML_ASSIGNMENT_2.git
+cd ML_ASSIGNMENT_2
 ```
 
 2. **Install dependencies**
