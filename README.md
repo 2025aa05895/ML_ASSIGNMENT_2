@@ -7,26 +7,38 @@ This project implements and compares six different machine learning classificati
 ---
 
 ## Dataset Description
+Heart Failure Prediction Dataset
 
+Cardiovascular diseases (CVDs) are the number 1 cause of death globally, taking an estimated 17.9 million lives each year, which accounts for 31% of all deaths worldwide. Four out of 5CVD deaths are due to heart attacks and strokes, and one-third of these deaths occur prematurely in people under 70 years of age. Heart failure is a common event caused by CVDs and this dataset contains 11 features that can be used to predict a possible heart disease.
+
+People with cardiovascular disease or who are at high cardiovascular risk (due to the presence of one or more risk factors such as hypertension, diabetes, hyperlipidaemia or already established disease) need early detection and management wherein a machine learning model can be of great help.
 ### Dataset Source
-**Dataset Name**: [Your Dataset Name Here]  
-**Source**: [Kaggle/UCI Repository Link]
+**Dataset Name**: Heart Failure Prediction Dataset  
+**Source**: https://www.kaggle.com/datasets/fedesoriano/heart-failure-prediction/data
 
 ### Dataset Characteristics
-- **Number of Instances**: [e.g., 1000]
-- **Number of Features**: [e.g., 15]
-- **Target Variable**: [e.g., Class/Label]
-- **Classification Type**: [Binary/Multi-class]
-- **Number of Classes**: [e.g., 2 or 5]
+- **Number of Instances**: 918 patient records
+- **Number of Features**: 12 (11 input features (12 total columns including target))
+- **Target Variable**: HeartDisease (0 = No heart disease, 1 = Heart disease)
+- **Classification Type**: Binary Classification
+- **Number of Classes**: 2 (Heart Disease / No Heart Disease)
 
 ### Features Description
-[Provide a brief description of the key features in your dataset]
+Built by combining multiple heart-disease datasets into one standardized table.Final dataset size: 918 patients with 11 input features + 1 target variable.Mix of clinical measurements, test results, and demographic attributes.
 
-Example:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- ...
-- Target: [Description]
+Attribute Information:
+- Age: age of the patient [years]
+- Sex: sex of the patient [M: Male, F: Female]
+- ChestPainType: chest pain type [TA: Typical Angina, ATA: Atypical Angina, NAP: Non-Anginal Pain, ASY: Asymptomatic]
+- RestingBP: resting blood pressure [mm Hg]
+- Cholesterol: serum cholesterol [mm/dl]
+- FastingBS: fasting blood sugar [1: if FastingBS > 120 mg/dl, 0: otherwise]
+- RestingECG: resting electrocardiogram results [Normal: Normal, ST: having ST-T wave abnormality (T wave inversions and/or ST elevation or depression of > 0.05 mV), LVH: showing probable or definite left ventricular hypertrophy by Estes' criteria]
+- MaxHR: maximum heart rate achieved [Numeric value between 60 and 202]
+- ExerciseAngina: exercise-induced angina [Y: Yes, N: No]
+- Oldpeak: oldpeak = ST [Numeric value measured in depression]
+- ST_Slope: the slope of the peak exercise ST segment [Up: upsloping, Flat: flat, Down: downsloping]
+- Target(HeartDisease): output class [1: heart disease, 0: Normal]
 
 ### Data Preprocessing
 - Handled missing values (if any)
@@ -43,12 +55,12 @@ Example:
 
 | ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
 |--------------|----------|-----|-----------|--------|-------|-----|
-| Logistic Regression | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] |
-| Decision Tree | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] |
-| kNN | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] |
-| Naive Bayes | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] |
-| Random Forest (Ensemble) | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] |
-| XGBoost (Ensemble) | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] | [0.XXXX] |
+| Logistic Regression | 0.8859 | 0.9297 | 0.8872 | 0.8859 | 0.8852 | 0.7694 |
+| Decision Tree | 0.788 | 0.7813 | 0.788 | 0.788 | 0.7868 | 0.5691 |
+| kNN | 0.8859 | 0.936 | 0.8859 | 0.8859 | 0.8856 | 0.7686 |
+| Naive Bayes | 0.913 | 0.9451 | 0.9134 | 0.913 | 0.9131 | 0.8246 |
+| Random Forest (Ensemble) | 0.8696 | 0.9314 | 0.8694 | 0.8696 | 0.8694 | 0.7356 |
+| XGBoost (Ensemble) | 0.8587 | 0.9219 | 0.8587 | 0.8587 | 0.8587 | 0.714 |
 
 ---
 
@@ -56,19 +68,19 @@ Example:
 
 | ML Model Name | Observation about model performance |
 |--------------|-------------------------------------|
-| Logistic Regression | [Your observation: e.g., "Logistic Regression showed moderate performance with an accuracy of X%. It performed well on linearly separable classes but struggled with complex decision boundaries. The model demonstrated good recall but lower precision, indicating more false positives."] |
-| Decision Tree | [Your observation: e.g., "Decision Tree achieved an accuracy of X% with tendency to overfit on training data. The model showed high variance and was sensitive to small changes in the dataset. Performance could be improved with proper pruning."] |
-| kNN | [Your observation: e.g., "K-Nearest Neighbors with k=5 achieved X% accuracy. The model performed well but was computationally expensive for predictions. Performance was sensitive to the choice of k and the distance metric used."] |
-| Naive Bayes | [Your observation: e.g., "Gaussian Naive Bayes showed X% accuracy. Despite the strong independence assumption, it performed reasonably well and was the fastest to train. However, it had lower precision compared to other models."] |
-| Random Forest (Ensemble) | [Your observation: e.g., "Random Forest achieved the second-best performance with X% accuracy and excellent AUC score of X. The ensemble approach reduced overfitting compared to a single decision tree and provided robust predictions with good generalization."] |
-| XGBoost (Ensemble) | [Your observation: e.g., "XGBoost demonstrated the best overall performance with X% accuracy and the highest F1 score of X. The gradient boosting technique effectively handled the dataset complexity and achieved superior results across all metrics including the highest MCC score."] |
+| Logistic Regression | Strong baseline performance with **88.59% accuracy** and high **AUC (0.9297)**, indicating good class separability. Precision, recall, and F1 scores are well balanced, showing stable performance across classes. High MCC (0.7694) suggests reliable predictions, making it a solid interpretable model for medical risk prediction. |
+| Decision Tree | Lowest performer among all models with **78.8% accuracy** and **AUC (0.7813)**, indicating weaker discrimination ability. Although highly interpretable, it may suffer from overfitting and limited generalization. Lower MCC (0.5691) reflects weaker balanced classification performance compared to other models. |
+| kNN | Performs comparably to Logistic Regression with **88.59% accuracy** and strong **AUC (0.936)**. Balanced precision–recall metrics show consistent classification. Being distance-based, performance depends heavily on feature scaling and choice of *k*; current setup provides stable results. |
+| Naive Bayes | **Best overall performer** with **91.3% accuracy**, highest **AUC (0.9451)**, and strongest **MCC (0.8246)**. Despite its feature independence assumption, it generalizes very well on this dataset. Excellent balance across precision, recall, and F1 makes it highly suitable for reliable predictions and real-time deployment. |
+| Random Forest (Ensemble) | Good ensemble performance with **86.96% accuracy** and strong **AUC (0.9314)**. Improves over single Decision Tree by reducing variance and overfitting. Balanced metrics and moderate MCC (0.7356) indicate robust but slightly less optimal performance compared to top models. |
+| XGBoost (Ensemble) | Reasonable performance with **85.87% accuracy** and **AUC (0.9219)**. Although gradient boosting typically performs strongly, here it trails behind Naive Bayes and kNN, possibly due to limited dataset size or hyperparameter tuning. MCC (0.714) indicates acceptable but not best class balance. |
 
 ---
 
 ## Repository Structure
 
 ```
-ml_assignment2/
+ml_assignment_2/
 │
 ├── app.py                          # Streamlit web application
 ├── requirements.txt                # Python dependencies
@@ -86,7 +98,7 @@ ml_assignment2/
 │   └── label_encoder.pkl          # LabelEncoder for target encoding
 │
 └── data/                           # (Optional) Dataset directory
-    └── your_dataset.csv
+    └── heart.csv
 ```
 
 ---
@@ -249,47 +261,11 @@ The app will open in your default browser at `http://localhost:8501`
 
 ---
 
-## Future Improvements
-
-- Implement hyperparameter tuning using GridSearchCV or RandomizedSearchCV
-- Add feature importance visualization
-- Include ROC curves and PR curves
-- Implement cross-validation for more robust evaluation
-- Add support for custom datasets with automatic preprocessing
-- Include model interpretation tools (SHAP, LIME)
-
----
-
 ## Author
 
-**[Your Name]**  
-M.Tech (AIML/DSE)  
-BITS Pilani - Work Integrated Learning Programme
+**Nagarjuna Manupati**  
+ID: 2025AA052895
+
+email:2025aa05895@wilp.bits-pilani.ac.in
 
 ---
-
-## Acknowledgments
-
-- BITS Pilani for the assignment guidelines
-- Scikit-learn and XGBoost documentation
-- Streamlit community for deployment resources
-
----
-
-## License
-
-This project is created for academic purposes as part of the Machine Learning course assignment.
-
----
-
-## Contact
-
-For any queries regarding this project:
-- Email: [your.email@example.com]
-- GitHub: [your-github-username]
-
----
-
-**Submission Date**: 15-Feb-2026  
-**Course**: Machine Learning  
-**Assignment**: Assignment 2
