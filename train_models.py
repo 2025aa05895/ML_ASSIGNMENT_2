@@ -230,8 +230,8 @@ def main():
     Main execution function
     """
     # Example usage - You need to update these values based on your dataset
-    DATA_PATH = 'data\heart.csv'  # Update this
-    TARGET_COLUMN = 'HeartDisease'  # Update this with your target column name
+    DATA_PATH = 'your_dataset.csv'  # Update this
+    TARGET_COLUMN = 'target'  # Update this with your target column name
     
     # Initialize pipeline
     pipeline = MLClassifierPipeline(DATA_PATH)
