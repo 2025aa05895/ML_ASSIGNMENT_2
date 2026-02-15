@@ -51,6 +51,16 @@ st.markdown("""
 # Title and description
 st.title("💡 Machine Learning Classification Models")
 st.markdown("### Compare Multiple Classification Algorithms")
+
+# Student Details
+st.markdown("""
+    <div style='text-align: center; background-color: #f0f2f6; padding: 15px; border-radius: 10px; margin-bottom: 20px;'>
+        <p style='margin: 5px; color: #333;'><strong>Name:</strong> Nagarjuna Manupati | <strong>ID:</strong> 2025AA052895</p>
+        <p style='margin: 5px; color: #333;'><strong>Email:</strong> 2025aa05895@wilp.bits-pilani.ac.in</p>
+        <p style='margin: 5px; color: #666;'>Machine Learning Assignment 2 | M.Tech (AIML/DSE) | BITS Pilani</p>
+    </div>
+    """, unsafe_allow_html=True)
+
 st.markdown("---")
 
 # Sidebar
