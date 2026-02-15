@@ -182,7 +182,7 @@ def main():
         st.sidebar.download_button(
             label="⬇️ Download heart.csv",
             data=sample_data,
-            file_name="heart.csv",
+            file_name="data/heart.csv",
             mime="text/csv",
             help="Download the sample heart disease dataset",
             use_container_width=True
