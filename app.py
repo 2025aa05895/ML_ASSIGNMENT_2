@@ -15,6 +15,11 @@ from sklearn.metrics import (accuracy_score, roc_auc_score, precision_score,
 import warnings
 warnings.filterwarnings('ignore')
 
+# Required columns for heart disease dataset
+REQUIRED_COLUMNS = ['Age', 'Sex', 'ChestPainType', 'RestingBP', 'Cholesterol', 
+                   'FastingBS', 'RestingECG', 'MaxHR', 'ExerciseAngina', 
+                   'Oldpeak', 'ST_Slope', 'HeartDisease']
+
 # Page configuration
 st.set_page_config(
     page_title="ML Classification Models",
@@ -142,15 +147,55 @@ def plot_confusion_matrix(cm, classes):
     return fig
 
 
+def validate_dataset(df):
+    """Validate if dataset has required columns"""
+    df_columns = set(df.columns)
+    required_columns = set(REQUIRED_COLUMNS)
+    
+    if df_columns == required_columns:
+        return True, "Dataset validated successfully!"
+    else:
+        missing_cols = required_columns - df_columns
+        extra_cols = df_columns - required_columns
+        
+        error_msg = "Dataset validation failed:\n"
+        if missing_cols:
+            error_msg += f"Missing columns: {', '.join(missing_cols)}\n"
+        if extra_cols:
+            error_msg += f"Extra columns: {', '.join(extra_cols)}\n"
+        error_msg += f"\nRequired columns: {', '.join(REQUIRED_COLUMNS)}"
+        
+        return False, error_msg
+
+
 def main():
     """Main application function"""
     
     # Sidebar - File Upload
     st.sidebar.markdown("### 📁 Upload Test Data")
+    
+    # Download sample dataset button
+    st.sidebar.markdown("#### 📥 Download Sample Dataset")
+    try:
+        with open('heart.csv', 'rb') as f:
+            sample_data = f.read()
+        st.sidebar.download_button(
+            label="⬇️ Download heart.csv",
+            data=sample_data,
+            file_name="heart.csv",
+            mime="text/csv",
+            help="Download the sample heart disease dataset",
+            use_container_width=True
+        )
+    except FileNotFoundError:
+        st.sidebar.info("💡 Sample dataset (heart.csv) not found in the app directory")
+    
+    st.sidebar.markdown("---")
+    
     uploaded_file = st.sidebar.file_uploader(
         "Choose a CSV file", 
         type=['csv'],
-        help="Upload your test dataset in CSV format"
+        help="Upload your test dataset in CSV format (must match heart.csv structure)"
     )
     
     # Sidebar - Model Selection
@@ -171,7 +216,16 @@ def main():
             # Load data
             df = pd.read_csv(uploaded_file)
             
-            st.success(f"✅ Dataset uploaded successfully! Shape: {df.shape}")
+            # Validate dataset
+            is_valid, validation_msg = validate_dataset(df)
+            
+            if not is_valid:
+                st.error(f"❌ {validation_msg}")
+                st.warning("⚠️ Please upload a dataset with the same structure as heart.csv")
+                st.info("💡 Download the sample heart.csv file from the sidebar to see the required format")
+                return
+            
+            st.success(f"✅ Dataset uploaded and validated successfully! Shape: {df.shape}")
             
             # Show dataset preview
             with st.expander("📋 View Dataset Preview", expanded=False):
@@ -304,12 +358,15 @@ def main():
         st.markdown("""
         ### 📖 Instructions:
         
-        1. **Upload Dataset**: Click on 'Browse files' in the sidebar to upload your test dataset (CSV format)
-        2. **Select Target Column**: Choose the target variable from the dropdown
-        3. **Choose Model**: Select one of the 6 classification models
-        4. **Run Predictions**: Click the 'Run Predictions' button
-        5. **View Results**: Analyze the evaluation metrics, confusion matrix, and classification report
-        6. **Download**: Export predictions as CSV for further analysis
+        1. **Download Sample Dataset** (Optional): Download heart.csv from the sidebar to see the required format
+        2. **Upload Dataset**: Click on 'Browse files' in the sidebar to upload your test dataset (CSV format)
+           - Must have the same columns as heart.csv
+           - Required columns: Age, Sex, ChestPainType, RestingBP, Cholesterol, FastingBS, RestingECG, MaxHR, ExerciseAngina, Oldpeak, ST_Slope, HeartDisease
+        3. **Select Target Column**: Choose the target variable from the dropdown (usually 'HeartDisease')
+        4. **Choose Model**: Select one of the 6 classification models
+        5. **Run Predictions**: Click the 'Run Predictions' button
+        6. **View Results**: Analyze the evaluation metrics, confusion matrix, and classification report
+        7. **Download**: Export predictions as CSV for further analysis
         
         ### 🎯 Available Models:
         """)
@@ -325,6 +382,11 @@ def main():
         - **Recall**: True positive rate (Sensitivity)
         - **F1 Score**: Harmonic mean of precision and recall
         - **MCC Score**: Matthews Correlation Coefficient
+        
+        ### ⚠️ Dataset Requirements:
+        - File format: CSV
+        - Must contain all required columns with exact names (case-sensitive)
+        - Download heart.csv from sidebar to see the correct format
         """)
     
     # Footer
