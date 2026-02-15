@@ -53,7 +53,7 @@ st.markdown("""
     <div style='text-align: center; background-color: #f0f2f6; padding: 10px; border-radius: 8px; margin-bottom: 15px;'>
         <p style='margin: 3px; font-size: 14px; color: #333;'><strong>Name:</strong> Nagarjuna Manupati | <strong>ID:</strong> 2025AA05895</p>
         <p style='margin: 3px; font-size: 14px; color: #333;'><strong>Email:</strong> 2025aa05895@wilp.bits-pilani.ac.in</p>
-        <p style='margin: 3px; font-size: 12px; color: #666;'>Machine Learning Assignment 2 | M.Tech (AIML/DSE) | BITS Pilani</p>
+        <p style='margin: 3px; font-size: 12px; color: #666;'>Machine Learning Assignment 2</p>
     </div>
     """, unsafe_allow_html=True)
 
