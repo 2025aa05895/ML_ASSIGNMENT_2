@@ -182,13 +182,13 @@ def main():
         st.sidebar.download_button(
             label="⬇️ Download heart.csv",
             data=sample_data,
-            file_name="data/heart.csv",
+            file_name="heart.csv",
             mime="text/csv",
             help="Download the sample heart disease dataset",
             use_container_width=True
         )
     except FileNotFoundError:
-        st.sidebar.info("💡 Sample dataset (heart.csv) not found in the app directory")
+        st.sidebar.info("💡 Sample dataset (heart.csv) not found in data/ directory")
     
     st.sidebar.markdown("---")
     
@@ -197,18 +197,6 @@ def main():
         type=['csv'],
         help="Upload your test dataset in CSV format (must match heart.csv structure)"
     )
-    
-    # Sidebar - Model Selection
-    st.sidebar.markdown("### 🎯 Select Model")
-    selected_model = st.sidebar.selectbox(
-        "Choose a classification model:",
-        list(MODEL_INFO.keys()),
-        help="Select which model to use for predictions"
-    )
-    
-    # Display model description
-    st.sidebar.markdown("#### Model Description")
-    st.sidebar.info(MODEL_INFO[selected_model]['description'])
     
     # Main content area
     if uploaded_file is not None:
@@ -239,6 +227,17 @@ def main():
                 df.columns.tolist(),
                 index=len(df.columns)-1  # Default to last column
             )
+            
+            # Model Selection
+            st.markdown("### 🎯 Select Model")
+            selected_model = st.selectbox(
+                "Choose a classification model:",
+                list(MODEL_INFO.keys()),
+                help="Select which model to use for predictions"
+            )
+            
+            # Display model description
+            st.info(f"**{selected_model}**: {MODEL_INFO[selected_model]['description']}")
             
             if st.button("🚀 Run Predictions", type="primary", use_container_width=True):
                 with st.spinner("Loading model and making predictions..."):
