@@ -199,7 +199,7 @@ The app will open in your default browser at `http://localhost:8501`
    - You'll receive a public URL for your app
 
 ### Live App Link
-🔗 **[Your Streamlit App URL will be here]**
+🔗 **https://mlassignment2-asdwwapmtonelxxuervgyv.streamlit.app/**
 
 ---
 
