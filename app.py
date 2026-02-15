@@ -177,7 +177,7 @@ def main():
     # Download sample dataset button
     st.sidebar.markdown("#### 📥 Download Sample Dataset")
     try:
-        with open('heart.csv', 'rb') as f:
+        with open('data/heart.csv', 'rb') as f:
             sample_data = f.read()
         st.sidebar.download_button(
             label="⬇️ Download heart.csv",
